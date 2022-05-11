@@ -27,7 +27,7 @@
 					<!-- </div> -->
 				<!-- </div> -->
 				
-				<div class="progressTitle">0%</div>
+				<div id="progressTitle">0%</div>
 				
 				<div id="warningBrowserBlock" style="display:none;">
 					<div class="warningBrowserText">
@@ -138,11 +138,11 @@
 		var isChrome =  isIOSChrome || (isChromium !== null && typeof isChromium !== "undefined" && vendorName === "Google Inc." && isOpera === false && isIEedge === false);
 		
 		var buildUrl = "Build";
-		var loaderUrl = buildUrl + "/v1.loader.js";
+		var loaderUrl = buildUrl + "/v2.loader.js";
 		var config = {
-        dataUrl: buildUrl + "/v1.data",
-        frameworkUrl: buildUrl + "/v1.framework.js",
-        codeUrl: buildUrl + "/v1.wasm",
+        dataUrl: buildUrl + "/v2.data",
+        frameworkUrl: buildUrl + "/v2.framework.js",
+        codeUrl: buildUrl + "/v2.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Observatorium",
