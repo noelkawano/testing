@@ -11,21 +11,23 @@
   
 	<div class="keepRatio">
 		<div id="gameContainer" class="unity-desktop webgl-content">
-			<button id="fullScreenButton" onclick="ToggleFullScreen()"></button>
+			<!-- <button id="fullScreenButton" onclick="ToggleFullScreen()"></button> -->
 			<canvas id="gameCanvas"></canvas>
 			<div id="loadingBlock">
-				<img class="logo" src="TemplateData/img/Logo.png"></img>
-				<span class="subtitle"> CATCHPHRASE <br>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</span>
+				<!-- <img class="logo" src="TemplateData/img/Logo.png"></img> -->
+				<!-- <span class="subtitle"> CATCHPHRASE <br> -->
+				<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. -->
+				<!-- </span> -->
 			
-				<div id="progressBar">
-					<div>LOADING ...</div>
-					<div class="centered">
-						<div id="emptyBar"></div>
-						<div id="fullBar"></div>
-					</div>
-				</div>
+				<!-- <div id="progressBar"> -->
+					<!-- <div>LOADING ...</div> -->
+					<!-- <div class="centered"> -->
+						<!-- <div id="emptyBar"></div> -->
+						<!-- <div id="fullBar"></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+				
+				<div class="progressTitle">0%</div>
 				
 				<div id="warningBrowserBlock" style="display:none;">
 					<div class="warningBrowserText">
@@ -136,11 +138,11 @@
 		var isChrome =  isIOSChrome || (isChromium !== null && typeof isChromium !== "undefined" && vendorName === "Google Inc." && isOpera === false && isIEedge === false);
 		
 		var buildUrl = "Build";
-		var loaderUrl = buildUrl + "/v0.loader.js";
+		var loaderUrl = buildUrl + "/v1.loader.js";
 		var config = {
-        dataUrl: buildUrl + "/v0.data",
-        frameworkUrl: buildUrl + "/v0.framework.js",
-        codeUrl: buildUrl + "/v0.wasm",
+        dataUrl: buildUrl + "/v1.data",
+        frameworkUrl: buildUrl + "/v1.framework.js",
+        codeUrl: buildUrl + "/v1.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Observatorium",
@@ -150,9 +152,9 @@
 		var container = document.querySelector("#gameContainer");
 		var canvas = document.querySelector("#gameCanvas");
 		var loadingBar = document.querySelector("#loadingBlock");
-		var progressBarFull = document.querySelector("#fullBar");
-		var progressBarEmpty = document.querySelector("#emptyBar");
-		var fullscreenButton = document.querySelector("#fullScreenButton");
+		<!-- var progressBarFull = document.querySelector("#fullBar"); -->
+		<!-- var progressBarEmpty = document.querySelector("#emptyBar"); -->
+		<!-- var fullscreenButton = document.querySelector("#fullScreenButton"); -->
 
 		if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
 			container.className = "unity-mobile";
@@ -164,13 +166,14 @@
 		script.src = loaderUrl;
 		script.onload = () => {
 			createUnityInstance(canvas, config, (progress) => {
-			progressBarFull.style.width = 100 * progress + "%";	 	
-			progressBarEmpty.style.width = (100 * (1 - progress)) + "%";
+			document.getElementById("progressTitle").textContent = Math.trunc(100 * progress) + "%";
+			<!-- progressBarFull.style.width = 100 * progress + "%";	 	 -->
+			<!-- progressBarEmpty.style.width = (100 * (1 - progress)) + "%"; -->
 		}).then((unityInstance) => {
 			loadingBar.style.display = "none";
-			fullscreenButton.onclick = () => {
-			ToggleFullScreen();
-		  };
+			<!-- fullscreenButton.onclick = () => { -->
+			<!-- ToggleFullScreen(); -->
+		  <!-- }; -->
 		}).catch((message) => {
 			alert(message);
 		});
